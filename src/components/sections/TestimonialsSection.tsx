@@ -127,14 +127,14 @@ const TestimonialsSection = () => {
           {/* Arrows */}
           <button
             onClick={prev}
-            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 sm:-translate-x-6 rounded-full bg-background p-2 shadow-romantic text-foreground transition-colors hover:bg-muted"
+            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-8 sm:-translate-x-14 rounded-full bg-background p-2 shadow-romantic text-foreground transition-colors hover:bg-muted"
             aria-label="Previous testimonials"
           >
             <ChevronLeft className="h-5 w-5" />
           </button>
           <button
             onClick={next}
-            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 sm:translate-x-6 rounded-full bg-background p-2 shadow-romantic text-foreground transition-colors hover:bg-muted"
+            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-8 sm:translate-x-14 rounded-full bg-background p-2 shadow-romantic text-foreground transition-colors hover:bg-muted"
             aria-label="Next testimonials"
           >
             <ChevronRight className="h-5 w-5" />
