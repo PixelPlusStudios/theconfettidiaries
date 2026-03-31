@@ -52,6 +52,7 @@ const ServicesSection = () => {
           <div className="mx-auto mt-6 h-px w-24 gradient-gold" />
         </motion.div>
 
+        {/* Top row: 3 cards (1 per row on mobile) */}
         <div className="mt-16 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
           {services.slice(0, 3).map((service, i) => (
             <motion.div
@@ -71,11 +72,13 @@ const ServicesSection = () => {
             </motion.div>
           ))}
         </div>
-        <div className="mt-8 flex justify-center gap-8">
+
+        {/* Bottom row: 2 cards centered (1 per row on mobile) */}
+        <div className="mt-8 grid grid-cols-1 gap-8 sm:flex sm:justify-center sm:gap-8">
           {services.slice(3).map((service, i) => (
             <motion.div
               key={service.title}
-              className="w-full max-w-xs rounded-xl bg-background/60 p-8 shadow-romantic backdrop-blur-sm transition-transform hover:scale-[1.02]"
+              className="rounded-xl bg-background/60 p-8 shadow-romantic backdrop-blur-sm transition-transform hover:scale-[1.02] sm:w-full sm:max-w-xs"
               initial={{ opacity: 0, y: 40 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: (i + 3) * 0.15 }}

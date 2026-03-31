@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback, useRef } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import wedding1 from "@/assets/wedding-01.jpg";
@@ -61,7 +61,7 @@ const HeroSection = () => {
   };
 
   return (
-    <section className="relative w-full overflow-hidden bg-foreground aspect-video">
+    <section className="relative w-full overflow-hidden bg-foreground" style={{ aspectRatio: "16/9" }}>
       {/* Main Slide */}
       <AnimatePresence custom={direction} mode="popLayout">
         <motion.div
@@ -90,7 +90,7 @@ const HeroSection = () => {
         <AnimatePresence mode="wait">
           <motion.h2
             key={current}
-            className="text-display text-3xl font-semibold text-primary-foreground sm:text-5xl lg:text-6xl tracking-wide"
+            className="text-display text-2xl font-semibold text-primary-foreground sm:text-5xl lg:text-6xl tracking-wide"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -30 }}
@@ -99,7 +99,7 @@ const HeroSection = () => {
             {slides[current].title}
           </motion.h2>
         </AnimatePresence>
-        <h1 className="shimmer-text text-display mt-4 text-lg font-bold tracking-[0.15em] sm:text-2xl whitespace-nowrap"
+        <h1 className="shimmer-text text-display mt-3 sm:mt-4 text-sm sm:text-2xl font-bold tracking-[0.15em] whitespace-nowrap"
           style={{
             background: "linear-gradient(90deg, hsl(var(--primary-foreground)) 0%, hsl(var(--gold)) 50%, hsl(var(--primary-foreground)) 100%)",
             backgroundSize: "200% auto",
@@ -116,34 +116,34 @@ const HeroSection = () => {
       {/* Nav Arrows */}
       <button
         onClick={prev}
-        className="absolute left-4 top-1/2 z-20 -translate-y-1/2 rounded-full bg-background/20 p-2 text-primary-foreground backdrop-blur-sm transition-colors hover:bg-background/40"
+        className="absolute left-2 sm:left-4 top-1/2 z-20 -translate-y-1/2 rounded-full bg-background/20 p-1.5 sm:p-2 text-primary-foreground backdrop-blur-sm transition-colors hover:bg-background/40"
         aria-label="Previous slide"
       >
-        <ChevronLeft className="h-6 w-6" />
+        <ChevronLeft className="h-4 w-4 sm:h-6 sm:w-6" />
       </button>
       <button
         onClick={next}
-        className="absolute right-4 top-1/2 z-20 -translate-y-1/2 rounded-full bg-background/20 p-2 text-primary-foreground backdrop-blur-sm transition-colors hover:bg-background/40"
+        className="absolute right-2 sm:right-4 top-1/2 z-20 -translate-y-1/2 rounded-full bg-background/20 p-1.5 sm:p-2 text-primary-foreground backdrop-blur-sm transition-colors hover:bg-background/40"
         aria-label="Next slide"
       >
-        <ChevronRight className="h-6 w-6" />
+        <ChevronRight className="h-4 w-4 sm:h-6 sm:w-6" />
       </button>
 
       {/* Counter */}
-      <div className="absolute bottom-28 left-1/2 z-20 -translate-x-1/2 text-sans text-sm text-primary-foreground/80 tracking-widest">
+      <div className="absolute bottom-20 sm:bottom-28 left-1/2 z-20 -translate-x-1/2 text-sans text-xs sm:text-sm text-primary-foreground/80 tracking-widest">
         {String(current + 1).padStart(2, "0")} — {String(slides.length).padStart(2, "0")}
       </div>
 
       {/* Thumbnail Strip */}
-      <div className="absolute bottom-6 left-1/2 z-20 -translate-x-1/2 flex gap-2">
+      <div className="absolute bottom-3 sm:bottom-6 left-1/2 z-20 -translate-x-1/2 flex gap-1.5 sm:gap-2">
         {slides.map((slide, i) => (
           <button
             key={i}
             onClick={() => goTo(i)}
             className={`overflow-hidden rounded-md transition-all duration-300 border-2 ${
               i === current
-                ? "border-primary-foreground w-16 h-12 sm:w-20 sm:h-14 scale-105"
-                : "border-transparent w-12 h-9 sm:w-16 sm:h-11 opacity-60 hover:opacity-90"
+                ? "border-primary-foreground w-10 h-7 sm:w-20 sm:h-14 scale-105"
+                : "border-transparent w-8 h-5 sm:w-16 sm:h-11 opacity-60 hover:opacity-90"
             }`}
             aria-label={`Go to slide ${i + 1}`}
           >
