@@ -52,7 +52,7 @@ const HeroSection = () => {
   };
 
   return (
-    <section className="relative h-screen w-full overflow-hidden bg-foreground">
+    <section className="relative w-full overflow-hidden bg-foreground aspect-video">
       {/* Main Slide */}
       <AnimatePresence custom={direction} mode="popLayout">
         <motion.div
