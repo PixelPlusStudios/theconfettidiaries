@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import wedding1 from "@/assets/wedding-01.jpg";
@@ -16,6 +16,15 @@ const slides = [
   { img: wedding5, title: "Romantic Evenings" },
   { img: wedding6, title: "Royal Affairs" },
 ];
+
+// Preload all slide images into browser cache
+const preloadImages = () => {
+  slides.forEach((slide) => {
+    const img = new Image();
+    img.src = slide.img;
+  });
+};
+preloadImages();
 
 const HeroSection = () => {
   const [current, setCurrent] = useState(0);

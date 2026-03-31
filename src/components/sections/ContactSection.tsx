@@ -35,15 +35,19 @@ const ContactSection = () => {
         >
           <div className="flex items-center gap-3 text-secondary-foreground">
             <Mail className="h-5 w-5 text-primary" />
-            <span className="text-sans text-sm tracking-wider">hello@confettidiaries.com</span>
+            <span className="text-sans text-sm tracking-wider">weddings.tcd@gmail.com</span>
           </div>
           <div className="flex items-center gap-3 text-secondary-foreground">
             <Phone className="h-5 w-5 text-primary" />
-            <span className="text-sans text-sm tracking-wider">+1 (555) 123-4567</span>
+            <span className="text-sans text-sm tracking-wider">+91 8300966436</span>
+          </div>
+          <div className="flex items-center gap-3 text-secondary-foreground">
+            <Phone className="h-5 w-5 text-primary" />
+            <span className="text-sans text-sm tracking-wider">+91 6374398414</span>
           </div>
           <div className="flex items-center gap-3 text-secondary-foreground">
             <MapPin className="h-5 w-5 text-primary" />
-            <span className="text-sans text-sm tracking-wider">New York, NY</span>
+            <span className="text-sans text-sm tracking-wider">Location</span>
           </div>
         </motion.div>
 
