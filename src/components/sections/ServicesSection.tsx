@@ -52,6 +52,7 @@ const ServicesSection = () => {
           <div className="mx-auto mt-6 h-px w-24 gradient-gold" />
         </motion.div>
 
+        {/* Mobile: single column stack. Desktop: 3+2 layout */}
         <div className="mt-16 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
           {services.slice(0, 3).map((service, i) => (
             <motion.div
@@ -71,11 +72,32 @@ const ServicesSection = () => {
             </motion.div>
           ))}
         </div>
-        <div className="mt-8 flex justify-center gap-8">
+        {/* Bottom 2 centered - hidden on mobile (shown in grid above via sm:grid-cols-2) */}
+        <div className="mt-8 hidden sm:flex justify-center gap-8">
           {services.slice(3).map((service, i) => (
             <motion.div
               key={service.title}
               className="w-full max-w-xs rounded-xl bg-background/60 p-8 shadow-romantic backdrop-blur-sm transition-transform hover:scale-[1.02]"
+              initial={{ opacity: 0, y: 40 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.6, delay: (i + 3) * 0.15 }}
+            >
+              <service.icon className="h-8 w-8 text-primary" />
+              <h3 className="text-display mt-4 text-xl font-semibold text-foreground">
+                {service.title}
+              </h3>
+              <p className="text-body mt-3 text-base leading-relaxed text-muted-foreground">
+                {service.description}
+              </p>
+            </motion.div>
+          ))}
+        </div>
+        {/* Mobile only: show last 2 in single column */}
+        <div className="mt-8 flex flex-col gap-8 sm:hidden">
+          {services.slice(3).map((service, i) => (
+            <motion.div
+              key={service.title}
+              className="rounded-xl bg-background/60 p-8 shadow-romantic backdrop-blur-sm transition-transform hover:scale-[1.02]"
               initial={{ opacity: 0, y: 40 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: (i + 3) * 0.15 }}
