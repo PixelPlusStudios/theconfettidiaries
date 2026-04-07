@@ -4,6 +4,7 @@ import path from "path";
 
 export default defineConfig({
   plugins: [react()],
+  base: "/theconfettidiaries/",
   test: {
     environment: "jsdom",
     globals: true,
