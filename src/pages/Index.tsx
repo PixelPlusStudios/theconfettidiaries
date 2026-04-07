@@ -25,7 +25,7 @@ const Index = () => {
   return (
     <>
       <Navbar />
-      <main>
+      <main className="pt-16">
         <HeroSection />
         <ParallaxSection speed={0.05}>
           <AboutSection />

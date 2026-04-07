@@ -13,7 +13,7 @@ const Blog = () => {
   return (
     <>
       <Navbar />
-      <main className="min-h-screen bg-ivory pt-24 pb-16">
+      <main className="min-h-screen bg-ivory pt-24 pb-16 pt-16">
         <div className="container mx-auto max-w-6xl px-6">
           <motion.div
             className="text-center"

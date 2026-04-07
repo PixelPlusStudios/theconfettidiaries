@@ -21,7 +21,7 @@ const EventAlbum = () => {
     return (
       <>
         <Navbar />
-        <main className="pt-24 pb-16 bg-ivory min-h-screen flex items-center justify-center">
+        <main className="pt-24 pb-16 bg-ivory min-h-screen flex items-center justify-center pt-16">
           <div className="text-center">
             <h1 className="text-display text-3xl font-semibold text-foreground">Event not found</h1>
             <Link to="/portfolio" className="text-primary mt-4 inline-block underline">
@@ -54,7 +54,7 @@ const EventAlbum = () => {
     <>
       <SparkleTrail />
       <Navbar />
-      <main className="pt-24 pb-16 bg-ivory min-h-screen">
+      <main className="pt-24 pb-16 bg-ivory min-h-screen pt-16">
         <div className="container mx-auto max-w-6xl px-6">
           <div className="mb-6">
             <Link

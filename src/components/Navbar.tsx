@@ -78,7 +78,7 @@ const Navbar = () => {
           <>
             {/* Backdrop */}
             <motion.div
-              className="fixed inset-0 z-40 bg-foreground/40 md:hidden"
+              className="fixed inset-0 z-40 bg-black/50 md:hidden"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
@@ -86,7 +86,7 @@ const Navbar = () => {
             />
             {/* Side panel */}
             <motion.div
-              className="fixed top-0 right-0 z-50 h-full w-72 bg-ivory shadow-2xl flex flex-col px-6 pt-16 pb-8 md:hidden"
+              className="fixed top-0 right-0 z-[60] h-[calc(100vh-4rem)] w-[85%] max-w-sm bg-white shadow-2xl flex flex-col px-6 pt-10 pb-8 overflow-y-auto md:hidden"
               initial={{ x: "100%" }}
               animate={{ x: 0 }}
               exit={{ x: "100%" }}

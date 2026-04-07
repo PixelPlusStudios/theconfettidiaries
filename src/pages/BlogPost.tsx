@@ -18,7 +18,7 @@ const BlogPost = () => {
     return (
       <>
         <Navbar />
-        <main className="min-h-screen bg-ivory pt-24 pb-16 flex items-center justify-center">
+        <main className="min-h-screen bg-ivory pt-24 pb-16 flex items-center justify-center pt-16">
           <div className="text-center">
             <h1 className="text-display text-3xl font-semibold text-foreground">Story Not Found</h1>
             <Link to="/blog" className="text-sans mt-6 inline-block text-sm tracking-widest text-primary uppercase hover:text-primary/80">
@@ -34,7 +34,7 @@ const BlogPost = () => {
   return (
     <>
       <Navbar />
-      <main className="min-h-screen bg-ivory">
+      <main className="min-h-screen bg-ivory pt-16">
         {/* Hero Image */}
         <motion.div
           className="relative h-[60vh] w-full overflow-hidden"

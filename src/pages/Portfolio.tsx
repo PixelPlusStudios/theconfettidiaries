@@ -16,7 +16,7 @@ const Portfolio = () => {
     <>
       <SparkleTrail />
       <Navbar />
-      <main className="pt-24 pb-16 bg-ivory min-h-screen">
+      <main className="pt-24 pb-16 bg-ivory min-h-screen pt-16">
         <div className="container mx-auto max-w-6xl px-6">
           <div className="mb-6">
             <Link
