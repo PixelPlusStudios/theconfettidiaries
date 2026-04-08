@@ -1,8 +1,8 @@
-import { useState } from "react";
+import { MouseEvent, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
-import { Link, useLocation } from "react-router-dom";
-import { Instagram, Youtube, Facebook } from "lucide-react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { FaInstagram, FaYoutube, FaFacebook } from "react-icons/fa";
 import logo from "@/assets/TCD logo.png";
 
 const links = [
@@ -17,13 +17,22 @@ const links = [
 const Navbar = () => {
   const [open, setOpen] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
 
-  const handleClick = (href: string) => {
+  const handleClick = (event: MouseEvent<HTMLAnchorElement>, href: string) => {
     setOpen(false);
-    if (href.startsWith("/#") && location.pathname === "/") {
-      const el = document.querySelector(href.replace("/", ""));
+    if (!href.startsWith("/#")) return;
+    event.preventDefault();
+    const anchor = href.split("#")[1];
+    if (!anchor) return;
+
+    if (location.pathname === "/") {
+      const el = document.getElementById(anchor);
       el?.scrollIntoView({ behavior: "smooth" });
+      return;
     }
+
+    navigate("/", { state: { scrollTo: anchor } });
   };
 
   return (
@@ -54,7 +63,7 @@ const Navbar = () => {
               <a
                 key={l.label}
                 href={l.href}
-                onClick={() => handleClick(l.href)}
+                onClick={(event) => handleClick(event, l.href)}
                 className="text-sans text-xs font-medium tracking-widest text-muted-foreground transition-colors hover:text-primary uppercase"
               >
                 {l.label}
@@ -116,7 +125,7 @@ const Navbar = () => {
                     <a
                       key={l.label}
                       href={l.href}
-                      onClick={() => handleClick(l.href)}
+                      onClick={(event) => handleClick(event, l.href)}
                       className="text-sans text-sm font-medium tracking-widest text-muted-foreground hover:text-primary uppercase"
                     >
                       {l.label}
@@ -131,14 +140,34 @@ const Navbar = () => {
                   Let's Get Social
                 </p>
                 <div className="flex gap-4">
-                  <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
-                    <Instagram className="h-5 w-5" />
+                  <a
+                    href="https://www.instagram.com/the_confetti_diaries?igsh=MXB6cjBpYmlweGFxeg=="
+                    target="_blank"
+                    rel="noreferrer"
+                    className="text-muted-foreground hover:text-primary transition-colors"
+                    aria-label="Instagram"
+                  >
+                    <FaInstagram className="h-5 w-5" />
                   </a>
-                  <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
-                    <Youtube className="h-5 w-5" />
+
+                  <a
+                    href="https://www.youtube.com/@theconfettidiaries518"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="text-muted-foreground hover:text-primary transition-colors"
+                    aria-label="YouTube"
+                  >
+                    <FaYoutube className="h-5 w-5" />
                   </a>
-                  <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
-                    <Facebook className="h-5 w-5" />
+
+                  <a
+                    href="https://www.facebook.com/share/1AvzGmb6SX/?mibextid=wwXIfr"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="text-muted-foreground hover:text-primary transition-colors"
+                    aria-label="Facebook"
+                  >
+                    <FaFacebook className="h-5 w-5" />
                   </a>
                 </div>
               </div>

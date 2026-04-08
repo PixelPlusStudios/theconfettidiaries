@@ -1,5 +1,6 @@
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
+import { useLocation, useNavigate } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/sections/HeroSection";
 import AboutSection from "@/components/sections/AboutSection";
@@ -22,6 +23,20 @@ const ParallaxSection = ({ children, speed = 0.1 }: { children: React.ReactNode;
 };
 
 const Index = () => {
+  const location = useLocation();
+  const navigate = useNavigate();
+  const scrollTarget = location.state?.scrollTo as string | undefined;
+
+  useEffect(() => {
+    if (!scrollTarget) return;
+
+    const timer = setTimeout(() => {
+      document.getElementById(scrollTarget)?.scrollIntoView({ behavior: "smooth" });
+      navigate(location.pathname, { replace: true, state: undefined });
+    }, 0);
+
+    return () => clearTimeout(timer);
+  }, [scrollTarget, location.pathname, navigate]);
   return (
     <>
       <Navbar />

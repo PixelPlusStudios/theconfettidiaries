@@ -39,15 +39,15 @@ const ContactSection = () => {
           </div>
           <div className="flex items-center gap-3 text-secondary-foreground">
             <Phone className="h-5 w-5 text-primary" />
-            <span className="text-sans text-sm tracking-wider">+91 8300966436</span>
+            <span className="text-sans text-sm tracking-wider">+91 83009 66436</span>
           </div>
           <div className="flex items-center gap-3 text-secondary-foreground">
             <Phone className="h-5 w-5 text-primary" />
-            <span className="text-sans text-sm tracking-wider">+91 6374398414</span>
+            <span className="text-sans text-sm tracking-wider">+91 63743 98414</span>
           </div>
           <div className="flex items-center gap-3 text-secondary-foreground">
             <MapPin className="h-5 w-5 text-primary" />
-            <span className="text-sans text-sm tracking-wider">Location</span>
+            <span className="text-sans text-sm tracking-wider">Chennai</span>
           </div>
         </motion.div>
 
