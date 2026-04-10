@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
 import aboutImg from "@/assets/about-us.jpg";
+import { aboutContent } from "@/content";
 
 const AboutSection = () => {
   const ref = useRef(null);
@@ -47,7 +48,7 @@ const AboutSection = () => {
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8, delay: 0.3 }}
             >
-              The Confetti Diaries — Founded in 2020 by Prince and Nikita, our journey began long before our business—back in our school days, where a friendship grew into love, and eventually into a lifelong partnership.
+              {aboutContent.description1}
             </motion.p>
             <motion.p
               className="text-body mt-5 text-lg leading-relaxed text-muted-foreground sm:text-xl"
