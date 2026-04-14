@@ -7,9 +7,9 @@ import logo from "@/assets/TCD logo.png";
 
 const links = [
   { label: "About Us", href: "/#about" },
-  { label: "Captured Moments", href: "/portfolio" },
+  { label: "Moments We Styled", href: "/portfolio" },
   { label: "Services", href: "/#services" },
-  { label: "Blog", href: "/blog" },
+  { label: "Celebration Stories", href: "/blog" },
   { label: "Testimonials", href: "/#testimonials" },
   { label: "Enquiry", href: "/#contact" },
 ];
@@ -38,7 +38,7 @@ const Navbar = () => {
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-ivory/80 backdrop-blur-md">
       <div className="container mx-auto flex items-center justify-between px-4 py-3 md:px-6 md:py-4">
-        <Link to="/" className="flex items-center gap-2 md:gap-3 mr-4 md:mr-12 min-w-0">
+        <Link to="/" onClick={() => { if (location.pathname === "/") window.scrollTo({ top: 0, behavior: "smooth" }); }} className="flex items-center gap-2 md:gap-3 mr-4 md:mr-12 min-w-0">
           <img
             src={logo}
             alt="Logo"

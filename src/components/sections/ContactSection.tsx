@@ -33,18 +33,18 @@ const ContactSection = () => {
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, delay: 0.2 }}
         >
-          <div className="flex items-center gap-3 text-secondary-foreground">
+          <a href="mailto:weddings.tcd@gmail.com" className="flex items-center gap-3 text-secondary-foreground hover:text-primary transition-colors">
             <Mail className="h-5 w-5 text-primary" />
             <span className="text-sans text-sm tracking-wider">weddings.tcd@gmail.com</span>
-          </div>
-          <div className="flex items-center gap-3 text-secondary-foreground">
+          </a>
+          <a href="tel:+918300966436" className="flex items-center gap-3 text-secondary-foreground hover:text-primary transition-colors">
             <Phone className="h-5 w-5 text-primary" />
             <span className="text-sans text-sm tracking-wider">+91 83009 66436</span>
-          </div>
-          <div className="flex items-center gap-3 text-secondary-foreground">
+          </a>
+          <a href="tel:+916374398414" className="flex items-center gap-3 text-secondary-foreground hover:text-primary transition-colors">
             <Phone className="h-5 w-5 text-primary" />
             <span className="text-sans text-sm tracking-wider">+91 63743 98414</span>
-          </div>
+          </a>
           <div className="flex items-center gap-3 text-secondary-foreground">
             <MapPin className="h-5 w-5 text-primary" />
             <span className="text-sans text-sm tracking-wider">Chennai</span>

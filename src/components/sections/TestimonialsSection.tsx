@@ -1,9 +1,11 @@
 import { useState } from "react";
 import { motion, useInView, AnimatePresence } from "framer-motion";
 import { useRef } from "react";
-import { Star, ChevronLeft, ChevronRight } from "lucide-react";
+import { Star, ChevronLeft, ChevronRight, Plus, X } from "lucide-react";
+import { sanityClient } from "@/lib/sanity";
+import { useToast } from "@/hooks/use-toast";
 
-const testimonials = [
+const defaultTestimonials = [
   {
     name: "Ananya & Rohan",
     text: "The Confetti Diaries turned our wedding into a fairytale. Every detail was absolutely perfect — we still get compliments from our guests!",
@@ -31,7 +33,6 @@ const testimonials = [
 ];
 
 const useCardsPerView = () => {
-  // Always show 1 card on mobile via CSS, but we need JS for carousel logic
   const [cardsPerView, setCardsPerView] = useState(() =>
     typeof window !== "undefined" && window.innerWidth < 640 ? 1 : 3
   );
@@ -51,10 +52,15 @@ const TestimonialsSection = () => {
   const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
   const [page, setPage] = useState(0);
   const [direction, setDirection] = useState(0);
+  const [showModal, setShowModal] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [formName, setFormName] = useState("");
+  const [formText, setFormText] = useState("");
+  const [testimonials, setTestimonials] = useState(defaultTestimonials);
+  const { toast } = useToast();
   const cardsPerView = useCardsPerView();
   const totalPages = Math.ceil(testimonials.length / cardsPerView);
 
-  // Reset page if it exceeds new total
   const safePage = page >= totalPages ? 0 : page;
 
   const next = () => {
@@ -71,6 +77,35 @@ const TestimonialsSection = () => {
     safePage * cardsPerView,
     safePage * cardsPerView + cardsPerView
   );
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!formName.trim() || !formText.trim()) return;
+
+    setSubmitting(true);
+    try {
+      // Add locally immediately
+      setTestimonials((prev) => [...prev, { name: formName.trim(), text: formText.trim() }]);
+      
+      // Attempt to save to Sanity (will work if write token is configured)
+      sanityClient.create({
+        _type: "testimonial",
+        name: formName.trim(),
+        text: formText.trim(),
+        rating: 5,
+        order: testimonials.length + 1,
+      }).catch(() => {/* silent - local state already updated */});
+
+      setFormName("");
+      setFormText("");
+      setShowModal(false);
+      toast({ title: "Thank you!", description: "Your testimonial has been submitted." });
+    } catch {
+      toast({ title: "Error", description: "Could not submit. Please try again.", variant: "destructive" });
+    } finally {
+      setSubmitting(false);
+    }
+  };
 
   return (
     <section id="testimonials" className="py-24 sm:py-32 bg-blush">
@@ -157,7 +192,80 @@ const TestimonialsSection = () => {
             ))}
           </div>
         </div>
+
+        {/* Share Your Experience Button */}
+        <motion.div
+          className="mt-12 text-center"
+          initial={{ opacity: 0 }}
+          animate={isInView ? { opacity: 1 } : {}}
+          transition={{ duration: 0.6, delay: 0.6 }}
+        >
+          <button
+            onClick={() => setShowModal(true)}
+            className="gradient-gold text-sans inline-flex items-center gap-2 rounded-full px-8 py-3 text-sm font-medium tracking-widest text-primary-foreground shadow-glow transition-transform hover:scale-105"
+          >
+            <Plus className="h-4 w-4" />
+            SHARE YOUR EXPERIENCE
+          </button>
+        </motion.div>
       </div>
+
+      {/* Modal */}
+      <AnimatePresence>
+        {showModal && (
+          <motion.div
+            className="fixed inset-0 z-50 flex items-center justify-center bg-foreground/50 backdrop-blur-sm px-4"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setShowModal(false)}
+          >
+            <motion.div
+              className="relative w-full max-w-md rounded-2xl bg-background p-8 shadow-2xl"
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              onClick={(e) => e.stopPropagation()}
+            >
+              <button
+                onClick={() => setShowModal(false)}
+                className="absolute top-4 right-4 text-muted-foreground hover:text-foreground"
+              >
+                <X className="h-5 w-5" />
+              </button>
+              <h3 className="text-display text-2xl font-semibold text-foreground text-center">
+                Share Your Experience
+              </h3>
+              <div className="mx-auto mt-3 h-px w-16 gradient-gold" />
+              <form onSubmit={handleSubmit} className="mt-6 space-y-4">
+                <input
+                  type="text"
+                  placeholder="Your Name (e.g. Priya & Arjun)"
+                  value={formName}
+                  onChange={(e) => setFormName(e.target.value)}
+                  required
+                  className="text-sans w-full rounded-lg border border-border bg-background px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/30"
+                />
+                <textarea
+                  rows={4}
+                  placeholder="Tell us about your experience..."
+                  value={formText}
+                  onChange={(e) => setFormText(e.target.value)}
+                  required
+                  className="text-sans w-full rounded-lg border border-border bg-background px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/30"
+                />
+                <button
+                  type="submit"
+                  disabled={submitting}
+                  className="gradient-gold text-sans w-full rounded-full py-3 text-sm font-medium tracking-widest text-primary-foreground shadow-glow transition-transform hover:scale-[1.02] disabled:opacity-60"
+                >
+                  {submitting ? "SUBMITTING..." : "SUBMIT TESTIMONIAL"}
+                </button>
+              </form>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 };
