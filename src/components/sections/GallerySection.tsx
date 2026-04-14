@@ -49,10 +49,10 @@ const GallerySection = () => {
           transition={{ duration: 0.8 }}
         >
           <p className="text-sans text-xs font-medium tracking-[0.3em] text-primary uppercase">
-            Memories
+            Portfolio
           </p>
           <h2 className="text-display mt-4 text-4xl font-semibold text-foreground sm:text-5xl">
-            Wedding Gallery
+            Moments We Styled
           </h2>
           <div className="mx-auto mt-6 h-px w-24 gradient-gold" />
         </motion.div>
