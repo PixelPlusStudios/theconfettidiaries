@@ -131,10 +131,6 @@ const HeroSection = () => {
         <ChevronRight className="h-4 w-4 sm:h-6 sm:w-6" />
       </button>
 
-      {/* Counter */}
-      <div className="absolute bottom-16 sm:bottom-28 left-1/2 z-20 -translate-x-1/2 text-sans text-xs sm:text-sm text-primary-foreground/80 tracking-widest">
-        {String(current + 1).padStart(2, "0")} — {String(slides.length).padStart(2, "0")}
-      </div>
 
       {/* Thumbnail Strip */}
       <div className="absolute bottom-3 sm:bottom-6 left-1/2 z-20 -translate-x-1/2 flex gap-1.5 sm:gap-2">

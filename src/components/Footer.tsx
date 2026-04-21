@@ -1,6 +1,7 @@
 import { FaInstagram, FaYoutube, FaFacebook } from "react-icons/fa";
 
 const Footer = () => (
+
   <footer className="bg-blush py-12 text-center">
     <p className="text-display text-lg font-semibold tracking-[0.15em] text-black">
       THE CONFETTI DIARIES
