@@ -1,12 +1,12 @@
 import { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import wedding1 from "@/assets/wedding-01.jpg";
-import wedding2 from "@/assets/wedding-03.jpg";
-import wedding3 from "@/assets/wedding-05.jpg";
-import wedding4 from "@/assets/wedding-08.jpg";
-import wedding5 from "@/assets/wedding-11.jpg";
-import wedding6 from "@/assets/wedding-16.jpg";
+import wedding1 from "@/assets/hero/01.jpg";
+import wedding2 from "@/assets/hero/02.jpg";
+import wedding3 from "@/assets/hero/03.jpg";
+import wedding4 from "@/assets/hero/04.jpg";
+import wedding5 from "@/assets/hero/05.jpg";
+import wedding6 from "@/assets/hero/06.jpg";
 
 const slides = [
   { img: wedding1, title: "Timeless Moments" },
