@@ -2,7 +2,6 @@ import { useState } from "react";
 import { motion, useInView, AnimatePresence } from "framer-motion";
 import { useRef } from "react";
 import { Star, ChevronLeft, ChevronRight, Plus, X } from "lucide-react";
-import { sanityClient } from "@/lib/sanity";
 import { useToast } from "@/hooks/use-toast";
 
 const defaultTestimonials = [
@@ -84,18 +83,7 @@ const TestimonialsSection = () => {
 
     setSubmitting(true);
     try {
-      // Add locally immediately
       setTestimonials((prev) => [...prev, { name: formName.trim(), text: formText.trim() }]);
-      
-      // Attempt to save to Sanity (will work if write token is configured)
-      sanityClient.create({
-        _type: "testimonial",
-        name: formName.trim(),
-        text: formText.trim(),
-        rating: 5,
-        order: testimonials.length + 1,
-      }).catch(() => {/* silent - local state already updated */});
-
       setFormName("");
       setFormText("");
       setShowModal(false);
