@@ -6,28 +6,28 @@ import { useToast } from "@/hooks/use-toast";
 
 const defaultTestimonials = [
   {
-    name: "Ananya & Rohan",
-    text: "The Confetti Diaries turned our wedding into a fairytale. Every detail was absolutely perfect — we still get compliments from our guests!",
+    name: "Anita Talwar",
+    text: "TCD are very professional decorators. I am very happy with Nikita and her team\’s execution and attention to each and every detail. Kudos to Nikita and her team for creating a romantic and beautiful ambience for my daughter\’s reception. Her team did a complete make over to the hall and it exceeded my expectations.",
   },
   {
-    name: "Charlotte & William",
-    text: "Working with this team felt like magic. They understood our vision instantly and created something beyond our wildest dreams.",
+    name: "Preethi Dvaz & Terence Dvaz",
+    text: "I recently had the pleasure of working with Confetti Diaries for my son\’s wedding, and I highly recommend them. The planning process was seamless and reduced our burden. On the day of the wedding, everything was flawlessly executed. The team managed the event expertly, allowing us to focus on celebrating our special day. If you're looking for a planner who can take you through the process and let you enjoy your celebration, look no further than Confetti Diaries!",
   },
   {
-    name: "Mei & Daniel",
-    text: "From the first meeting to the last dance, everything was seamless. They don't just plan weddings — they create unforgettable experiences.",
+    name: "AP Srinivasan",
+    text: "Nikita and Prince were amazing. They put up with our constant changes and requests patiently and communicated very well and transparently. On the day the venue (Primrose 131) was mind blowing. It was exactly how we had imagined it. Every guest there was blown away. Also they helped fully sort other ancillary items like drinks, DJ, tables for caterers etc. which was a massive help. I ca\’t recommend them enough!",
   },
   {
-    name: "Sofia & James",
-    text: "We couldn't have imagined a more perfect day. The attention to detail, the creativity — everything was beyond what we hoped for.",
+    name: "Neelanjana",
+    text: "Chose TCD for my engagement, the team was very professional, special mention to nikita who was extremely patient and cooperative to the client needs, made all the necessary changes and had good suggestions to give out as well. Elated how beautifully the decor has reflected in pictures as well. Overall kudos and best wishes to the team. Will 10/10 recommend.",
   },
   {
-    name: "Priya & Arjun",
-    text: "A truly world-class team. They handled every element with grace and made our celebration feel effortless and spectacular.",
+    name: "Anuya & Pranav",
+    text: "Nikita & Prince and the entire time of The Confetti Diaries made our wedding dream a reality! Every single guest was in awe of how the entire bit was planned and executed. The decor for every function was exactly the way we had imagined it and the main wedding day especially was beyond expectation. They treated our wedding as their own. They treated us like family. They were thorough professionals and managed to pull off everything flawlessly. They are flexible and took charge of everything that came up even at the last minute. They both compliment each other really well. They love what they are doing and it shows in the way they operate. We would recommend them 💯 to anyone looking to plan a special, memorable life event.",
   },
   {
-    name: "Lara & Ethan",
-    text: "Every moment was curated with such love and care. Our guests are still talking about how beautiful everything was.",
+    name: "Faristha K",
+    text: "TCD was a name among many that I stumbled upon during the hunt for an event planner in Chennai for my brother\’s wedding reception. While the stellar reviews on WedMeGood initially drew me to TCD, it was Prince\’s and Nikita\’s proactive can-do attitude as well as swift communication that sealed the deal for me. Prince and Nikita were very quick to understand our vision for the wedding reception and shared their professional suggestions for table centrepieces to stage set-up and everything in between. They were also extremely resourceful and connected us with make-up artists, henna artists, and hamper packaging services among other creatives in the wedding industry, which honestly made the chaotic days leading up to the wedding a lot easier. The icing on the cake was TCD’s ability to get things done efficiently with minimal supervision, which is definitely an edge they have over other event planners in Chennai. They never once put us in a position where we felt the need  to constantly remind them of what needed to be done and follow up to see whether those things had been done or not. If anything, they went above and beyond to ensure that we provided what they needed to make the event a success. If I had to plan my brother\’s wedding reception all over again, I\’d definitely do it with TCD by my side.",
   },
 ];
 
