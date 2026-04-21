@@ -1,6 +1,6 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { Heart, Camera, Sparkles, Music, Truck } from "lucide-react";
+import { Heart, Camera, Sparkles, Music, Truck, Palette } from "lucide-react";
 
 const services = [
   {
@@ -10,8 +10,13 @@ const services = [
   },
   {
     icon: Sparkles,
-    title: "Decor & Design",
+    title: "Art of Decor",
     description: "Bespoke floral arrangements, lighting, and styling that transform venues into dreamscapes.",
+  },
+  {
+    icon: Palette,
+    title: "Design & Creative Services",
+    description: "Customized wedding themes, mood boards & design planning crafted to your story.",
   },
   {
     icon: Camera,
