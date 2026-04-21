@@ -25,7 +25,7 @@ const EventAlbum = () => {
           <div className="text-center">
             <h1 className="text-display text-3xl font-semibold text-foreground">Event not found</h1>
             <Link to="/portfolio" className="text-primary mt-4 inline-block underline">
-              Back to Captured Moments
+              Back to Moments We Styled
             </Link>
           </div>
         </main>
@@ -62,24 +62,24 @@ const EventAlbum = () => {
               className="text-sans inline-flex items-center gap-2 text-xs font-medium tracking-widest text-muted-foreground hover:text-primary uppercase transition-colors"
             >
               <ArrowLeft className="h-4 w-4" />
-              Back to Captured Moments
+              Back to Moments We Styled
             </Link>
           </div>
 
-          <motion.div
+          {/* <motion.div
             className="text-center mb-10"
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-          >
-            <p className="text-sans text-xs font-medium tracking-[0.3em] text-primary uppercase">
+          > */}
+            {/* <p className="text-sans text-xs font-medium tracking-[0.3em] text-primary uppercase">
               {event.category}
-            </p>
-            <h1 className="text-display mt-4 text-4xl font-semibold text-foreground sm:text-5xl">
+            </p> */}
+            {/* <h1 className="text-display mt-4 text-4xl font-semibold text-foreground sm:text-5xl">
               {event.title}
-            </h1>
-            <div className="mx-auto mt-6 h-px w-24 gradient-gold" />
-          </motion.div>
+            </h1> */}
+            {/* <div className="mx-auto mt-6 h-px w-24 gradient-gold" />
+          </motion.div> */}
 
           {/* Full-view Carousel */}
           <div className="relative w-full aspect-[3/2] rounded-lg overflow-hidden bg-muted shadow-romantic">

@@ -38,7 +38,7 @@ const Portfolio = () => {
               Our Work
             </p>
             <h1 className="text-display mt-4 text-4xl font-semibold text-foreground sm:text-5xl">
-              Captured Moments
+              Moments We Styled
             </h1>
             <div className="mx-auto mt-6 h-px w-24 gradient-gold" />
             <p className="text-body mt-6 text-lg text-muted-foreground max-w-xl mx-auto">
@@ -66,11 +66,11 @@ const Portfolio = () => {
                     loading="lazy"
                   />
                   <div className="absolute inset-0 flex flex-col items-center justify-end bg-gradient-to-t from-foreground/70 to-transparent p-6 opacity-0 transition-opacity duration-500 group-hover:opacity-100">
-                    <span className="text-sans text-[10px] font-medium tracking-[0.2em] text-primary-foreground/70 uppercase">
+                    {/* <span className="text-sans text-[10px] font-medium tracking-[0.2em] text-primary-foreground/70 uppercase">
                       {item.category}
-                    </span>
+                    </span> */}
                     <h3 className="text-display text-lg font-semibold text-primary-foreground mt-1">
-                      {item.title}
+                      {item.category}
                     </h3>
                   </div>
                 </motion.div>
