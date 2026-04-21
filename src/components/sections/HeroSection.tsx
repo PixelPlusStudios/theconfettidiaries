@@ -1,12 +1,12 @@
 import { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import wedding1 from "@/assets/wedding-01.jpg";
-import wedding2 from "@/assets/wedding-03.jpg";
-import wedding3 from "@/assets/wedding-05.jpg";
-import wedding4 from "@/assets/wedding-08.jpg";
-import wedding5 from "@/assets/wedding-11.jpg";
-import wedding6 from "@/assets/wedding-16.jpg";
+import wedding1 from "@/assets/hero/01.jpg";
+import wedding2 from "@/assets/hero/02.jpg";
+import wedding3 from "@/assets/hero/03.jpg";
+import wedding4 from "@/assets/hero/04.jpg";
+import wedding5 from "@/assets/hero/05.jpg";
+import wedding6 from "@/assets/hero/06.jpg";
 
 const slides = [
   { img: wedding1, title: "Timeless Moments" },
@@ -101,7 +101,7 @@ const HeroSection = () => {
             {slides[current].title}
           </motion.h2>
         </AnimatePresence>
-        <h1 className="shimmer-text text-display mt-3 text-sm font-bold tracking-[0.12em] sm:mt-4 sm:text-2xl whitespace-nowrap"
+        <h1 className="font-brand mt-3 text-sm tracking-[0.12em] sm:mt-4 sm:text-2xl whitespace-nowrap"
           style={{
             background: "linear-gradient(90deg, hsl(var(--primary-foreground)) 0%, hsl(var(--gold)) 50%, hsl(var(--primary-foreground)) 100%)",
             backgroundSize: "200% auto",

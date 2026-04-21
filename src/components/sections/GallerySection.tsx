@@ -2,12 +2,12 @@ import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
-import wedding1 from "@/assets/wedding-02.jpg";
-import wedding2 from "@/assets/wedding-04.jpg";
-import wedding3 from "@/assets/wedding-06.jpg";
-import wedding4 from "@/assets/wedding-09.jpg";
-import wedding5 from "@/assets/wedding-10.jpg";
-import wedding6 from "@/assets/wedding-17.jpg";
+import wedding1 from "@/assets/gallery/01.jpg";
+import wedding2 from "@/assets/gallery/02.jpg";
+import wedding3 from "@/assets/gallery/03.jpg";
+import wedding4 from "@/assets/gallery/04.jpg";
+import wedding5 from "@/assets/gallery/05.jpg";
+import wedding6 from "@/assets/gallery/06.jpg";
 
 const topRow = [wedding1, wedding2, wedding3, wedding4, wedding5, wedding6];
 const bottomRow = [wedding6, wedding5, wedding4, wedding3, wedding2, wedding1];

@@ -46,6 +46,38 @@ const useCardsPerView = () => {
   return cardsPerView;
 };
 
+const CHAR_LIMIT = 220;
+
+const TestimonialCard = ({ name, text }: { name: string; text: string }) => {
+  const [expanded, setExpanded] = useState(false);
+  const isLong = text.length > CHAR_LIMIT;
+  const displayed = !isLong || expanded ? text : text.slice(0, CHAR_LIMIT).trimEnd() + "…";
+
+  return (
+    <div className="rounded-xl bg-background/70 p-8 shadow-romantic backdrop-blur-sm flex flex-col items-center text-center min-h-[340px]">
+      <div className="flex justify-center gap-1">
+        {[...Array(5)].map((_, j) => (
+          <Star key={j} className="h-4 w-4 fill-gold text-gold" />
+        ))}
+      </div>
+      <p className="text-body mt-5 text-sm italic leading-relaxed text-secondary-foreground sm:text-base">
+        "{displayed}"
+      </p>
+      {isLong && (
+        <button
+          onClick={() => setExpanded((v) => !v)}
+          className="text-sans mt-3 text-xs font-semibold tracking-widest text-primary hover:underline uppercase"
+        >
+          {expanded ? "Read less" : "Read more"}
+        </button>
+      )}
+      <p className="text-sans mt-auto pt-6 text-xs font-semibold tracking-widest text-primary uppercase">
+        — {name}
+      </p>
+    </div>
+  );
+};
+
 const TestimonialsSection = () => {
   const sectionRef = useRef(null);
   const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
@@ -126,22 +158,7 @@ const TestimonialsSection = () => {
                 className="grid grid-cols-1 gap-6 sm:grid-cols-3"
               >
                 {currentCards.map((t) => (
-                  <div
-                    key={t.name}
-                    className="rounded-xl bg-background/70 p-8 shadow-romantic backdrop-blur-sm flex flex-col items-center text-center"
-                  >
-                    <div className="flex justify-center gap-1">
-                      {[...Array(5)].map((_, j) => (
-                        <Star key={j} className="h-4 w-4 fill-gold text-gold" />
-                      ))}
-                    </div>
-                    <p className="text-body mt-5 text-sm italic leading-relaxed text-secondary-foreground sm:text-base">
-                      "{t.text}"
-                    </p>
-                    <p className="text-sans mt-6 text-xs font-semibold tracking-widest text-primary uppercase">
-                      — {t.name}
-                    </p>
-                  </div>
+                  <TestimonialCard key={t.name} name={t.name} text={t.text} />
                 ))}
               </motion.div>
             </AnimatePresence>
