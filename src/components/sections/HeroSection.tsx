@@ -101,7 +101,7 @@ const HeroSection = () => {
             {slides[current].title}
           </motion.h2>
         </AnimatePresence>
-        <h1 className="shimmer-text text-display mt-3 text-sm font-bold tracking-[0.12em] sm:mt-4 sm:text-2xl whitespace-nowrap"
+        <h1 className="font-brand mt-3 text-sm tracking-[0.12em] sm:mt-4 sm:text-2xl whitespace-nowrap"
           style={{
             background: "linear-gradient(90deg, hsl(var(--primary-foreground)) 0%, hsl(var(--gold)) 50%, hsl(var(--primary-foreground)) 100%)",
             backgroundSize: "200% auto",

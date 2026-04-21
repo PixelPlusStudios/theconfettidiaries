@@ -44,7 +44,7 @@ const Navbar = () => {
             alt="Logo"
             className="h-8 md:h-10 w-auto object-contain flex-shrink-0"
           />
-          <span className="text-display text-xs md:text-lg font-bold tracking-[0.1em] md:tracking-[0.15em] text-foreground whitespace-nowrap">
+          <span className="font-brand text-xs md:text-lg tracking-[0.1em] md:tracking-[0.15em] text-foreground whitespace-nowrap">
             THE CONFETTI DIARIES
           </span>
         </Link>
