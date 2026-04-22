@@ -112,10 +112,6 @@ const Portfolio = () => {
             <ChevronRight className="h-4 w-4 sm:h-6 sm:w-6" />
           </button>
 
-          {/* Slide counter */}
-          <div className="absolute bottom-4 sm:bottom-6 left-1/2 z-20 -translate-x-1/2 text-sans text-xs sm:text-sm tracking-widest text-primary-foreground/90 bg-background/20 backdrop-blur-sm rounded-full px-4 py-1.5">
-            {String(current + 1).padStart(2, "0")} / {String(slides.length).padStart(2, "0")}
-          </div>
         </section>
       </main>
       <Footer />
