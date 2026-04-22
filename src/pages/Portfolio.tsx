@@ -12,11 +12,23 @@ const Portfolio = () => {
     window.scrollTo(0, 0);
   }, []);
 
+  // Flatten every album image once, preserving order
+  const allImages = portfolioItems.flatMap((item) =>
+    item.album.map((src, idx) => ({
+      src,
+      alt: `${item.title} ${idx + 1}`,
+      key: `${item.id}-${idx}`,
+    }))
+  );
+
+  // Duplicate once for a seamless infinite scroll loop
+  const looped = [...allImages, ...allImages];
+
   return (
     <>
       <SparkleTrail />
       <Navbar />
-      <main className="pt-24 pb-16 bg-ivory min-h-screen pt-16">
+      <main className="pt-24 pb-16 bg-ivory min-h-screen">
         <div className="container mx-auto max-w-6xl px-6">
           <div className="mb-6">
             <Link
@@ -45,36 +57,26 @@ const Portfolio = () => {
               A curated collection of weddings and ceremonies we've had the honour of bringing to life.
             </p>
           </motion.div>
+        </div>
 
-          {/* Pinterest / Masonry Grid */}
-          <div className="columns-1 sm:columns-2 lg:columns-3 gap-4 space-y-4">
-            {portfolioItems.map((item, i) => (
-              <Link
-                key={`${item.title}-${i}`}
-                to={`/portfolio/${item.id}`}
-                className="break-inside-avoid group relative overflow-hidden rounded-lg shadow-romantic block"
+        {/* Auto-scrolling carousel */}
+        <div className="overflow-hidden">
+          <div
+            className="flex gap-4 animate-scroll-left"
+            style={{ width: "max-content" }}
+          >
+            {looped.map((img, i) => (
+              <div
+                key={`${img.key}-${i}`}
+                className="flex-shrink-0 overflow-hidden rounded-lg shadow-romantic w-72 h-96 sm:w-80 sm:h-[28rem]"
               >
-                <motion.div
-                  initial={{ opacity: 0, y: 30 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: i * 0.08 }}
-                >
-                  <img
-                    src={item.img}
-                    alt={item.title}
-                    className={`w-full object-cover transition-transform duration-700 group-hover:scale-110 ${item.height}`}
-                    loading="lazy"
-                  />
-                  <div className="absolute inset-0 flex flex-col items-center justify-end bg-gradient-to-t from-foreground/70 to-transparent p-6 opacity-0 transition-opacity duration-500 group-hover:opacity-100">
-                    {/* <span className="text-sans text-[10px] font-medium tracking-[0.2em] text-primary-foreground/70 uppercase">
-                      {item.category}
-                    </span> */}
-                    <h3 className="text-display text-lg font-semibold text-primary-foreground mt-1">
-                      {item.category}
-                    </h3>
-                  </div>
-                </motion.div>
-              </Link>
+                <img
+                  src={img.src}
+                  alt={img.alt}
+                  className="w-full h-full object-cover"
+                  loading="lazy"
+                />
+              </div>
             ))}
           </div>
         </div>
