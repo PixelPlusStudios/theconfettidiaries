@@ -1,9 +1,9 @@
-import wedding1 from "@/assets/wedding-13.jpg";
-import wedding2 from "@/assets/wedding-14.jpg";
-import wedding3 from "@/assets/wedding-15.jpg";
-import wedding4 from "@/assets/wedding-22.jpg";
-import wedding5 from "@/assets/wedding-23.jpg";
-import wedding6 from "@/assets/wedding-24.jpg";
+import wedding1 from "@/assets/portfolio/wedding-13.jpg";
+import wedding2 from "@/assets/portfolio/wedding-14.jpg";
+import wedding3 from "@/assets/portfolio/wedding-15.jpg";
+import wedding4 from "@/assets/portfolio/wedding-22.jpg";
+import wedding5 from "@/assets/portfolio/wedding-23.jpg";
+import wedding6 from "@/assets/portfolio/wedding-24.jpg";
 
 export interface BlogPost {
   id: string;

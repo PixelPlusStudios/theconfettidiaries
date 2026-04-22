@@ -13,14 +13,10 @@ const Portfolio = () => {
   }, []);
 
   // Flatten every album image once, preserving order
-  const slides = portfolioItems.flatMap((item) =>
-    item.album.map((src, idx) => ({
-      src,
-      alt: `${item.title} ${idx + 1}`,
-      title: item.title,
-      category: item.category,
-    }))
-  );
+const slides = portfolioItems.map((src, idx) => ({
+  src,
+  alt: `Portfolio image ${idx + 1}`,
+}));
 
   const [current, setCurrent] = useState(0);
   const [direction, setDirection] = useState(1);
