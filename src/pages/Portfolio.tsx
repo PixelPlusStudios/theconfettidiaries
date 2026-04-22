@@ -112,6 +112,7 @@ const Portfolio = () => {
           >
             <ChevronRight className="h-4 w-4 sm:h-6 sm:w-6" />
           </button>
+          </div>
         </section>
       </main>
       <Footer />
