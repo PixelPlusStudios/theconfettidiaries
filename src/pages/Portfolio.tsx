@@ -71,11 +71,12 @@ const Portfolio = () => {
           </div>
         </section>
 
-        {/* Full-width carousel */}
-        <section
-          className="relative w-full overflow-hidden bg-foreground"
-          style={{ paddingTop: "56.25%" }}
-        >
+        {/* Padded carousel */}
+        <section className="px-4 sm:px-8 lg:px-16 pb-12 sm:pb-16">
+          <div
+            className="relative w-full overflow-hidden bg-foreground rounded-2xl shadow-2xl ring-1 ring-foreground/10"
+            style={{ paddingTop: "56.25%" }}
+          >
           <AnimatePresence custom={direction} mode="popLayout">
             <motion.div
               key={current}
