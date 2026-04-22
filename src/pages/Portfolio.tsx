@@ -52,6 +52,25 @@ const Portfolio = () => {
       <SparkleTrail />
       <Navbar />
       <main className="bg-ivory">
+        {/* Header */}
+        <section className="pt-28 pb-10 sm:pt-32 sm:pb-14 px-6">
+          <div className="max-w-5xl mx-auto text-center">
+            <Link
+              to="/"
+              className="text-sans inline-flex items-center gap-2 text-xs font-medium tracking-widest text-foreground/70 hover:text-foreground uppercase transition-colors mb-6"
+            >
+              <ArrowLeft className="h-4 w-4" />
+              Back to Home
+            </Link>
+            <p className="text-sans text-xs font-medium tracking-[0.3em] text-primary uppercase">
+              Our Work
+            </p>
+            <h1 className="text-display mt-3 text-3xl font-semibold text-foreground sm:text-5xl lg:text-6xl tracking-wide">
+              Moments We Styled
+            </h1>
+          </div>
+        </section>
+
         {/* Full-screen carousel */}
         <section
           className="relative w-full overflow-hidden bg-foreground"
@@ -74,40 +93,8 @@ const Portfolio = () => {
                 className="h-full w-full object-cover"
                 loading="eager"
               />
-              <div className="absolute inset-0 bg-foreground/30" />
             </motion.div>
           </AnimatePresence>
-
-          {/* Title overlay */}
-          <div className="absolute inset-0 z-10 flex flex-col items-center justify-center text-center px-6 pointer-events-none">
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={current}
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -30 }}
-                transition={{ duration: 0.5 }}
-              >
-                <p className="text-sans text-xs font-medium tracking-[0.3em] text-primary-foreground/90 uppercase">
-                  Our Work
-                </p>
-                <h1 className="text-display mt-3 text-3xl font-semibold text-primary-foreground sm:text-5xl lg:text-6xl tracking-wide">
-                  Moments We Styled
-                </h1>
-              </motion.div>
-            </AnimatePresence>
-          </div>
-
-          {/* Back link */}
-          <div className="absolute top-20 sm:top-24 left-4 sm:left-6 z-20">
-            <Link
-              to="/"
-              className="text-sans inline-flex items-center gap-2 text-xs font-medium tracking-widest text-primary-foreground/90 hover:text-primary-foreground uppercase transition-colors bg-background/20 backdrop-blur-sm rounded-full px-4 py-2"
-            >
-              <ArrowLeft className="h-4 w-4" />
-              Back to Home
-            </Link>
-          </div>
 
           {/* Nav Arrows */}
           <button
