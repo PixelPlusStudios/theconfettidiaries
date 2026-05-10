@@ -47,18 +47,89 @@ const useCardsPerView = () => {
 
 const CHAR_LIMIT = 220;
 
-const TestimonialCard = ({ name, text }: { name: string; text: string }) => {
+const StarRow = ({ value, size = 16 }: { value: number; size?: number }) => {
+  const pct = Math.max(0, Math.min(5, value)) / 5 * 100;
+  return (
+    <div className="relative inline-flex">
+      <div className="flex gap-1">
+        {[...Array(5)].map((_, i) => (
+          <Star key={i} className="text-gold" style={{ width: size, height: size }} />
+        ))}
+      </div>
+      <div
+        className="absolute inset-0 overflow-hidden pointer-events-none"
+        style={{ width: `${pct}%` }}
+      >
+        <div className="flex gap-1">
+          {[...Array(5)].map((_, i) => (
+            <Star key={i} className="fill-gold text-gold flex-shrink-0" style={{ width: size, height: size }} />
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+const StarRatingInput = ({
+  value,
+  onChange,
+}: {
+  value: number;
+  onChange: (v: number) => void;
+}) => {
+  const ref = useRef<HTMLDivElement>(null);
+  const [dragging, setDragging] = useState(false);
+
+  const computeFromClientX = (clientX: number) => {
+    const el = ref.current;
+    if (!el) return;
+    const rect = el.getBoundingClientRect();
+    const ratio = (clientX - rect.left) / rect.width;
+    const raw = Math.max(0, Math.min(5, ratio * 5));
+    const rounded = Math.round(raw * 10) / 10;
+    onChange(rounded);
+  };
+
+  useEffect(() => {
+    if (!dragging) return;
+    const onMove = (e: PointerEvent) => computeFromClientX(e.clientX);
+    const onUp = () => setDragging(false);
+    window.addEventListener("pointermove", onMove);
+    window.addEventListener("pointerup", onUp);
+    return () => {
+      window.removeEventListener("pointermove", onMove);
+      window.removeEventListener("pointerup", onUp);
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [dragging]);
+
+  return (
+    <div className="flex flex-col items-center gap-2">
+      <div
+        ref={ref}
+        className="cursor-pointer touch-none select-none"
+        onPointerDown={(e) => {
+          setDragging(true);
+          computeFromClientX(e.clientX);
+        }}
+      >
+        <StarRow value={value} size={28} />
+      </div>
+      <p className="text-sans text-xs tracking-widest text-muted-foreground">
+        {value.toFixed(1)} / 5.0 — drag to adjust
+      </p>
+    </div>
+  );
+};
+
+const TestimonialCard = ({ name, text, rating }: { name: string; text: string; rating: number }) => {
   const [expanded, setExpanded] = useState(false);
   const isLong = text.length > CHAR_LIMIT;
   const displayed = !isLong || expanded ? text : text.slice(0, CHAR_LIMIT).trimEnd() + "…";
 
   return (
     <div className="rounded-xl bg-background/70 p-8 shadow-romantic backdrop-blur-sm flex flex-col items-center text-center min-h-[340px]">
-      <div className="flex justify-center gap-1">
-        {[...Array(5)].map((_, j) => (
-          <Star key={j} className="h-4 w-4 fill-gold text-gold" />
-        ))}
-      </div>
+      <StarRow value={rating} size={16} />
       <p className="text-body mt-5 text-sm italic leading-relaxed text-secondary-foreground sm:text-base">
         "{displayed}"
       </p>
