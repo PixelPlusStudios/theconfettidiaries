@@ -9,7 +9,7 @@ const links = [
   { label: "About Us", href: "/#about" },
   { label: "Moments We Styled", href: "/portfolio" },
   { label: "Services", href: "/#services" },
-  { label: "Celebration Stories", href: "/blog" },
+  // { label: "Celebration Stories", href: "/blog" }, // Blog temporarily disabled
   { label: "Testimonials", href: "/#testimonials" },
   { label: "Enquiry", href: "/#contact" },
 ];
