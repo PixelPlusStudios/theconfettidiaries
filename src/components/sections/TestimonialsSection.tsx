@@ -2,36 +2,38 @@ import { useState, useRef, useEffect } from "react";
 import { motion, useInView, AnimatePresence } from "framer-motion";
 import { Star, ChevronLeft, ChevronRight, Plus, X } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { supabase } from "@/lib/supabase";
+import { Testimonial } from "@/types/testimonials";
 
-const defaultTestimonials: { name: string; text: string; rating: number }[] = [
+const defaultTestimonials: Testimonial[] = [
   {
     name: "Anita Talwar",
-    text: "TCD are very professional decorators. I am very happy with Nikita and her team\’s execution and attention to each and every detail. Kudos to Nikita and her team for creating a romantic and beautiful ambience for my daughter\’s reception. Her team did a complete make over to the hall and it exceeded my expectations.",
+    message: "TCD are very professional decorators. I am very happy with Nikita and her team\’s execution and attention to each and every detail. Kudos to Nikita and her team for creating a romantic and beautiful ambience for my daughter\’s reception. Her team did a complete make over to the hall and it exceeded my expectations.",
     rating: 5,
   },
   {
     name: "Preethi Dvaz & Terence Dvaz",
-    text: "I recently had the pleasure of working with Confetti Diaries for my son\’s wedding, and I highly recommend them. The planning process was seamless and reduced our burden. On the day of the wedding, everything was flawlessly executed. The team managed the event expertly, allowing us to focus on celebrating our special day. If you're looking for a planner who can take you through the process and let you enjoy your celebration, look no further than Confetti Diaries!",
+    message: "I recently had the pleasure of working with Confetti Diaries for my son\’s wedding, and I highly recommend them. The planning process was seamless and reduced our burden. On the day of the wedding, everything was flawlessly executed. The team managed the event expertly, allowing us to focus on celebrating our special day. If you're looking for a planner who can take you through the process and let you enjoy your celebration, look no further than Confetti Diaries!",
     rating: 5,
   },
   {
     name: "AP Srinivasan",
-    text: "Nikita and Prince were amazing. They put up with our constant changes and requests patiently and communicated very well and transparently. On the day the venue (Primrose 131) was mind blowing. It was exactly how we had imagined it. Every guest there was blown away. Also they helped fully sort other ancillary items like drinks, DJ, tables for caterers etc. which was a massive help. I ca\’t recommend them enough!",
+    message: "Nikita and Prince were amazing. They put up with our constant changes and requests patiently and communicated very well and transparently. On the day the venue (Primrose 131) was mind blowing. It was exactly how we had imagined it. Every guest there was blown away. Also they helped fully sort other ancillary items like drinks, DJ, tables for caterers etc. which was a massive help. I ca\’t recommend them enough!",
     rating: 5,
   },
   {
     name: "Neelanjana",
-    text: "Chose TCD for my engagement, the team was very professional, special mention to nikita who was extremely patient and cooperative to the client needs, made all the necessary changes and had good suggestions to give out as well. Elated how beautifully the decor has reflected in pictures as well. Overall kudos and best wishes to the team. Will 10/10 recommend.",
+    message: "Chose TCD for my engagement, the team was very professional, special mention to nikita who was extremely patient and cooperative to the client needs, made all the necessary changes and had good suggestions to give out as well. Elated how beautifully the decor has reflected in pictures as well. Overall kudos and best wishes to the team. Will 10/10 recommend.",
     rating: 5,
   },
   {
     name: "Anuya & Pranav",
-    text: "Nikita & Prince and the entire time of The Confetti Diaries made our wedding dream a reality! Every single guest was in awe of how the entire bit was planned and executed. The decor for every function was exactly the way we had imagined it and the main wedding day especially was beyond expectation. They treated our wedding as their own. They treated us like family. They were thorough professionals and managed to pull off everything flawlessly. They are flexible and took charge of everything that came up even at the last minute. They both compliment each other really well. They love what they are doing and it shows in the way they operate. We would recommend them 💯 to anyone looking to plan a special, memorable life event.",
+    message: "Nikita & Prince and the entire time of The Confetti Diaries made our wedding dream a reality! Every single guest was in awe of how the entire bit was planned and executed. The decor for every function was exactly the way we had imagined it and the main wedding day especially was beyond expectation. They treated our wedding as their own. They treated us like family. They were thorough professionals and managed to pull off everything flawlessly. They are flexible and took charge of everything that came up even at the last minute. They both compliment each other really well. They love what they are doing and it shows in the way they operate. We would recommend them 💯 to anyone looking to plan a special, memorable life event.",
     rating: 5,
   },
   {
     name: "Faristha K",
-    text: "TCD was a name among many that I stumbled upon during the hunt for an event planner in Chennai for my brother\’s wedding reception. While the stellar reviews on WedMeGood initially drew me to TCD, it was Prince\’s and Nikita\’s proactive can-do attitude as well as swift communication that sealed the deal for me. Prince and Nikita were very quick to understand our vision for the wedding reception and shared their professional suggestions for table centrepieces to stage set-up and everything in between. They were also extremely resourceful and connected us with make-up artists, henna artists, and hamper packaging services among other creatives in the wedding industry, which honestly made the chaotic days leading up to the wedding a lot easier. The icing on the cake was TCD’s ability to get things done efficiently with minimal supervision, which is definitely an edge they have over other event planners in Chennai. They never once put us in a position where we felt the need  to constantly remind them of what needed to be done and follow up to see whether those things had been done or not. If anything, they went above and beyond to ensure that we provided what they needed to make the event a success. If I had to plan my brother\’s wedding reception all over again, I\’d definitely do it with TCD by my side.",
+    message: "TCD was a name among many that I stumbled upon during the hunt for an event planner in Chennai for my brother\’s wedding reception. While the stellar reviews on WedMeGood initially drew me to TCD, it was Prince\’s and Nikita\’s proactive can-do attitude as well as swift communication that sealed the deal for me. Prince and Nikita were very quick to understand our vision for the wedding reception and shared their professional suggestions for table centrepieces to stage set-up and everything in between. They were also extremely resourceful and connected us with make-up artists, henna artists, and hamper packaging services among other creatives in the wedding industry, which honestly made the chaotic days leading up to the wedding a lot easier. The icing on the cake was TCD’s ability to get things done efficiently with minimal supervision, which is definitely an edge they have over other event planners in Chennai. They never once put us in a position where we felt the need  to constantly remind them of what needed to be done and follow up to see whether those things had been done or not. If anything, they went above and beyond to ensure that we provided what they needed to make the event a success. If I had to plan my brother\’s wedding reception all over again, I\’d definitely do it with TCD by my side.",
     rating: 5,
   },
 ];
@@ -128,10 +130,10 @@ const StarRatingInput = ({
   );
 };
 
-const TestimonialCard = ({ name, text, rating }: { name: string; text: string; rating: number }) => {
+const TestimonialCard = ({ name, message, rating }: { name: string; message: string; rating: number }) => {
   const [expanded, setExpanded] = useState(false);
-  const isLong = text.length > CHAR_LIMIT;
-  const displayed = !isLong || expanded ? text : text.slice(0, CHAR_LIMIT).trimEnd() + "…";
+  const isLong = message.length > CHAR_LIMIT;
+  const displayed = !isLong || expanded ? message : message.slice(0, CHAR_LIMIT).trimEnd() + "…";
 
   return (
     <div className="rounded-xl bg-background/70 p-8 shadow-romantic backdrop-blur-sm flex flex-col items-center text-center min-h-[340px]">
@@ -164,7 +166,8 @@ const TestimonialsSection = () => {
   const [formName, setFormName] = useState("");
   const [formText, setFormText] = useState("");
   const [formRating, setFormRating] = useState(5);
-  const [testimonials, setTestimonials] = useState(defaultTestimonials);
+  // const [testimonials, setTestimonials] = useState(defaultTestimonials);
+  const [testimonials, setTestimonials] = useState<Testimonial[]>(defaultTestimonials);
   const { toast } = useToast();
   const cardsPerView = useCardsPerView();
   const totalPages = Math.ceil(testimonials.length / cardsPerView);
@@ -186,24 +189,83 @@ const TestimonialsSection = () => {
     safePage * cardsPerView + cardsPerView
   );
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!formName.trim() || !formText.trim()) return;
+const fetchTestimonials = async () => {
+  const { data, error } = await supabase
+    .from("testimonials")
+    .select("*")
+    .order("created_at", { ascending: false });
 
-    setSubmitting(true);
-    try {
-      setTestimonials((prev) => [...prev, { name: formName.trim(), text: formText.trim(), rating: formRating }]);
-      setFormName("");
-      setFormText("");
-      setFormRating(5);
-      setShowModal(false);
-      toast({ title: "Thank you!", description: "Your testimonial has been submitted." });
-    } catch {
-      toast({ title: "Error", description: "Could not submit. Please try again.", variant: "destructive" });
-    } finally {
-      setSubmitting(false);
+  if (error) {
+    console.error(error);
+    return;
+  }
+
+  if (data) {
+    const formatted = data.map((item) => ({
+      id: item.id,
+      name: item.name,
+      message: item.message,
+      rating: item.rating || 5,
+    }));
+
+    setTestimonials([
+      ...defaultTestimonials,
+      ...formatted,
+    ]);
+  }
+};
+
+useEffect(() => {
+  fetchTestimonials();
+}, []);
+
+const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault();
+
+  if (!formName.trim() || !formText.trim()) return;
+
+  setSubmitting(true);
+
+  try {
+    const { error } = await supabase
+      .from("testimonials")
+      .insert([
+        {
+          name: formName.trim(),
+          message: formText.trim(),
+          rating: formRating,
+        },
+      ]);
+
+    if (error) {
+      throw error;
     }
-  };
+
+    await fetchTestimonials();
+
+    setFormName("");
+    setFormText("");
+    setFormRating(5);
+    setShowModal(false);
+
+    toast({
+      title: "Thank you!",
+      description: "Your testimonial has been submitted.",
+    });
+
+  } catch (error) {
+    console.error(error);
+
+    toast({
+      title: "Error",
+      description: "Could not submit. Please try again.",
+      variant: "destructive",
+    });
+
+  } finally {
+    setSubmitting(false);
+  }
+};
 
   return (
     <section id="testimonials" className="py-24 sm:py-32 bg-blush">
@@ -236,7 +298,7 @@ const TestimonialsSection = () => {
                 className="grid grid-cols-1 gap-6 sm:grid-cols-3"
               >
                 {currentCards.map((t) => (
-                  <TestimonialCard key={t.name} name={t.name} text={t.text} rating={t.rating} />
+                  <TestimonialCard key={t.name} name={t.name} message={t.message} rating={t.rating} />
                 ))}
               </motion.div>
             </AnimatePresence>
@@ -358,5 +420,6 @@ const TestimonialsSection = () => {
     </section>
   );
 };
+
 
 export default TestimonialsSection;
