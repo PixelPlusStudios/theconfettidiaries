@@ -3,7 +3,7 @@ import { motion, useInView, AnimatePresence } from "framer-motion";
 import { Star, ChevronLeft, ChevronRight, Plus, X } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
-const defaultTestimonials = [
+const defaultTestimonials: { name: string; text: string; rating: number }[] = [
   {
     name: "Anita Talwar",
     text: "TCD are very professional decorators. I am very happy with Nikita and her team\’s execution and attention to each and every detail. Kudos to Nikita and her team for creating a romantic and beautiful ambience for my daughter\’s reception. Her team did a complete make over to the hall and it exceeded my expectations.",
