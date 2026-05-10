@@ -163,6 +163,7 @@ const TestimonialsSection = () => {
   const [submitting, setSubmitting] = useState(false);
   const [formName, setFormName] = useState("");
   const [formText, setFormText] = useState("");
+  const [formRating, setFormRating] = useState(5);
   const [testimonials, setTestimonials] = useState(defaultTestimonials);
   const { toast } = useToast();
   const cardsPerView = useCardsPerView();
@@ -191,9 +192,10 @@ const TestimonialsSection = () => {
 
     setSubmitting(true);
     try {
-      setTestimonials((prev) => [...prev, { name: formName.trim(), text: formText.trim() }]);
+      setTestimonials((prev) => [...prev, { name: formName.trim(), text: formText.trim(), rating: formRating }]);
       setFormName("");
       setFormText("");
+      setFormRating(5);
       setShowModal(false);
       toast({ title: "Thank you!", description: "Your testimonial has been submitted." });
     } catch {
@@ -234,7 +236,7 @@ const TestimonialsSection = () => {
                 className="grid grid-cols-1 gap-6 sm:grid-cols-3"
               >
                 {currentCards.map((t) => (
-                  <TestimonialCard key={t.name} name={t.name} text={t.text} />
+                  <TestimonialCard key={t.name} name={t.name} text={t.text} rating={t.rating} />
                 ))}
               </motion.div>
             </AnimatePresence>
@@ -327,6 +329,12 @@ const TestimonialsSection = () => {
                   required
                   className="text-sans w-full rounded-lg border border-border bg-background px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/30"
                 />
+                <div className="rounded-lg border border-border bg-background px-4 py-3">
+                  <p className="text-sans text-xs tracking-widest text-muted-foreground uppercase mb-2 text-center">
+                    Your Rating
+                  </p>
+                  <StarRatingInput value={formRating} onChange={setFormRating} />
+                </div>
                 <textarea
                   rows={4}
                   placeholder="Tell us about your experience..."
