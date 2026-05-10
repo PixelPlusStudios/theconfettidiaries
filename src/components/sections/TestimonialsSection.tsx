@@ -1,6 +1,5 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { motion, useInView, AnimatePresence } from "framer-motion";
-import { useRef } from "react";
 import { Star, ChevronLeft, ChevronRight, Plus, X } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
