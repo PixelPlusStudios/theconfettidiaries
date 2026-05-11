@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FaInstagram, FaYoutube, FaFacebook } from "react-icons/fa";
-import logo from "@/assets/TCD logo.png";
+import logo from "@/assets/TCD-logo.png";
 
 const links = [
   { label: "About Us", href: "/#about" },
