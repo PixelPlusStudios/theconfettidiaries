@@ -12,12 +12,12 @@ const defaultTestimonials: Testimonial[] = [
     rating: 5,
   },
   {
-    name: "Preethi Dvaz & Terence Dvaz",
+    name: "Terence Dvaz & Family",
     message: "I recently had the pleasure of working with Confetti Diaries for my son\’s wedding, and I highly recommend them. The planning process was seamless and reduced our burden. On the day of the wedding, everything was flawlessly executed. The team managed the event expertly, allowing us to focus on celebrating our special day. If you're looking for a planner who can take you through the process and let you enjoy your celebration, look no further than Confetti Diaries!",
     rating: 5,
   },
   {
-    name: "AP Srinivasan",
+    name: "AP Srinivasan & Alexandra",
     message: "Nikita and Prince were amazing. They put up with our constant changes and requests patiently and communicated very well and transparently. On the day the venue (Primrose 131) was mind blowing. It was exactly how we had imagined it. Every guest there was blown away. Also they helped fully sort other ancillary items like drinks, DJ, tables for caterers etc. which was a massive help. I ca\’t recommend them enough!",
     rating: 5,
   },

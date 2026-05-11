@@ -9,12 +9,12 @@ import wedding5 from "@/assets/hero/05.jpg";
 import wedding6 from "@/assets/hero/06.jpg";
 
 const slides = [
-  { img: wedding1, title: "Timeless Moments" },
-  { img: wedding2, title: "Elegant Celebrations" },
   { img: wedding3, title: "Garden Dreams" },
-  { img: wedding4, title: "Grand Receptions" },
+  { img: wedding2, title: "Elegant Celebrations" },
+  { img: wedding4, title: "Divine Mandaps" },
   { img: wedding5, title: "Romantic Evenings" },
   { img: wedding6, title: "Royal Affairs" },
+  { img: wedding1, title: "Timeless Moments" },
 ];
 
 // Preload all slide images into browser cache
