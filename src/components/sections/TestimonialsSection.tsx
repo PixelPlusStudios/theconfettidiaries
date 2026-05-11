@@ -17,6 +17,26 @@ const defaultTestimonials: Testimonial[] = [
     rating: 5,
   },
   {
+    name: "Sanjana Manimaran",
+    message: "We had the pleasure of working with The Confetti Diaries for our engagement, reception and wedding events in Chennai. Since me and my husband lived abroad, we had to plan the events remotely. Nikita was receptive to all our ideas and inspirations for the event. She was detail oriented, professional, communicative, and helpful with her expert suggestions. The team was readily available to answer all of our questions. Nikita and Prince coordinated the decor for all of the events seamlessly. Not only did they bring our vision board to life but they went up a notch and surprised us with added elements. All of our guests were astonished and spellbound by the work! Highly recommend the team!",
+    rating: 5,
+  },
+  {
+    name: "Deepa Christine",
+    message: "An absolute delight!\n\nZero fuss, everything was planned and prepared ahead of time and I couldn't have asked for anything more!",
+    rating: 5,
+  },
+  {
+    name: "Dr. Suchithra Sampath",
+    message: "Nikitha and her TCD team created a masterpiece for our engagement. The location was transformed into a royal venue and our guest left with a real experience. From the chandelier on stage to the floral entrance for my fiance and I, what an impeccable vision come to life! We cannot thank you enough for everything. We got so many compliments till the end. Highly recommended service, well worth our money. Everything was well taken care of we had no worries. Thank you for Everything that you did. ❤️",
+    rating: 5,
+  },
+  {
+    name: "K. Natarajan",
+    message: "We had TCD do the decorations for a meet-n-greet that we held in Chennai for our son and his fiancée. All my communications with Nikita were through WhatsApp, as we planned the event remotely. She took the ideas and images I shared and transformed them into a stunning piece of work that exceeded our expectations! I don’t know how they manage to keep the flowers looking so fresh in Chennai heat. A lot of the guests assumed that they were artificial flowers until they touched them? A big thank you to the team for doing an absolutely phenomenal job! Wishing you tremendous success with your business.",
+    rating: 5,
+  },
+  {
     name: "AP Srinivasan & Alexandra",
     message: "Nikita and Prince were amazing. They put up with our constant changes and requests patiently and communicated very well and transparently. On the day the venue (Primrose 131) was mind blowing. It was exactly how we had imagined it. Every guest there was blown away. Also they helped fully sort other ancillary items like drinks, DJ, tables for caterers etc. which was a massive help. I ca\’t recommend them enough!",
     rating: 5,
