@@ -24,6 +24,15 @@ const Footer = () => (
     <p className="text-sans mt-4 text-xs tracking-wider text-black/60">
       © {new Date().getFullYear()} The Confetti Diaries
     </p>
+
+    <a
+      href="https://sites.google.com/view/the-confetti-diaries/home"
+      target="_blank"
+      rel="noreferrer"
+      className="text-sans mt-2 text-xs tracking-wider text-black/60 hover:text-black hover:underline"
+    >
+      Privacy Policy
+    </a>
   </footer>
 );
 
