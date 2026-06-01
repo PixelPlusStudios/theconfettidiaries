@@ -6,6 +6,7 @@ import { Routes, Route, HashRouter } from "react-router-dom";
 import Index from "./pages/Index";
 import Portfolio from "./pages/Portfolio";
 import NotFound from "./pages/NotFound";
+import WhatsAppButton from "./components/WhatsAppButton";
 // Blog feature temporarily disabled - will be re-enabled later
 // import Blog from "./pages/Blog";
 // import BlogPost from "./pages/BlogPost";
@@ -28,6 +29,7 @@ const App = () => (
           <Route path="*" element={<NotFound />} />
         </Routes>
       </HashRouter>
+      <WhatsAppButton />
     </TooltipProvider>
   </QueryClientProvider>
 );
