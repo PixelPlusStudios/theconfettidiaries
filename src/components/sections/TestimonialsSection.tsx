@@ -329,7 +329,7 @@ const handleSubmit = async (e: React.FormEvent) => {
                 className="grid grid-cols-1 gap-6 sm:grid-cols-3"
               >
                 {currentCards.map((t) => (
-                  <TestimonialCard key={t.name} name={t.name} message={t.message} rating={t.rating} />
+                  <TestimonialCard key={t.id ?? t.name} name={t.name} message={t.message} rating={t.rating} reply={t.reply} />
                 ))}
               </motion.div>
             </AnimatePresence>
