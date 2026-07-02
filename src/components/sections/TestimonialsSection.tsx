@@ -236,6 +236,7 @@ const fetchTestimonials = async () => {
       name: item.name,
       message: item.message,
       rating: item.rating || 5,
+      reply: item.reply ?? null,
     }));
 
     setTestimonials([
