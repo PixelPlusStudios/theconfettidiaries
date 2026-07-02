@@ -150,7 +150,7 @@ const StarRatingInput = ({
   );
 };
 
-const TestimonialCard = ({ name, message, rating }: { name: string; message: string; rating: number }) => {
+const TestimonialCard = ({ name, message, rating, reply }: { name: string; message: string; rating: number; reply?: string | null }) => {
   const [expanded, setExpanded] = useState(false);
   const isLong = message.length > CHAR_LIMIT;
   const displayed = !isLong || expanded ? message : message.slice(0, CHAR_LIMIT).trimEnd() + "…";
@@ -172,6 +172,16 @@ const TestimonialCard = ({ name, message, rating }: { name: string; message: str
       <p className="text-sans mt-auto pt-6 text-xs font-semibold tracking-widest text-primary uppercase">
         — {name}
       </p>
+      {reply && reply.trim() && (
+        <div className="mt-5 w-full rounded-lg border-l-2 border-primary bg-primary/5 p-4 text-left">
+          <p className="text-sans text-[10px] font-semibold tracking-[0.2em] text-primary uppercase mb-1">
+            Reply from The Confetti Diaries
+          </p>
+          <p className="text-body text-xs leading-relaxed text-secondary-foreground sm:text-sm">
+            {reply}
+          </p>
+        </div>
+      )}
     </div>
   );
 };
@@ -226,6 +236,7 @@ const fetchTestimonials = async () => {
       name: item.name,
       message: item.message,
       rating: item.rating || 5,
+      reply: item.reply ?? null,
     }));
 
     setTestimonials([
@@ -318,7 +329,7 @@ const handleSubmit = async (e: React.FormEvent) => {
                 className="grid grid-cols-1 gap-6 sm:grid-cols-3"
               >
                 {currentCards.map((t) => (
-                  <TestimonialCard key={t.name} name={t.name} message={t.message} rating={t.rating} />
+                  <TestimonialCard key={t.id ?? t.name} name={t.name} message={t.message} rating={t.rating} reply={t.reply} />
                 ))}
               </motion.div>
             </AnimatePresence>

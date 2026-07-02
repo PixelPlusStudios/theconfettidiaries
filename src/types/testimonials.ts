@@ -3,4 +3,5 @@ export type Testimonial = {
   name: string;
   message: string;
   rating: number;
+  reply?: string | null;
 };
