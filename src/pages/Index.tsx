@@ -37,6 +37,15 @@ const Index = () => {
 
     return () => clearTimeout(timer);
   }, [scrollTarget, location.pathname, navigate]);
+
+  useEffect(() => {
+    if (!location.hash) return;
+    const id = location.hash.slice(1);
+    const timer = setTimeout(() => {
+      document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+    }, 100);
+    return () => clearTimeout(timer);
+  }, [location.hash]);
   return (
     <>
       <Navbar />
