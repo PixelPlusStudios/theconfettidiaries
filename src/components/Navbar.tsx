@@ -48,7 +48,7 @@ const Navbar = () => {
             <span className="font-brand text-xs md:text-lg tracking-[0.1em] md:tracking-[0.15em] text-foreground whitespace-nowrap leading-tight">
               THE CONFETTI DIARIES
             </span>
-            <span className="text-sans text-[0.5rem] md:text-[0.65rem] font-medium tracking-[0.2em] md:tracking-[0.25em] text-muted-foreground uppercase whitespace-nowrap leading-tight">
+            <span className="text-sans text-[0.4rem] md:text-[0.55rem] font-medium tracking-[0.1em] md:tracking-[0.15em] text-muted-foreground uppercase whitespace-nowrap leading-tight">
               The Wedding Planning Company
             </span>
           </div>
