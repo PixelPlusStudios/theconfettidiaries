@@ -113,6 +113,9 @@ const HeroSection = () => {
         >
           THE CONFETTI DIARIES
         </h1>
+        <p className="mt-2 text-sans text-[0.65rem] sm:text-sm font-medium tracking-[0.25em] sm:tracking-[0.35em] text-primary-foreground/90 uppercase">
+          The Wedding Planning Company
+        </p>
       </div>
 
       {/* Nav Arrows */}
