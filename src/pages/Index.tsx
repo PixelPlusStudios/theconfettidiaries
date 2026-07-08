@@ -41,10 +41,17 @@ const Index = () => {
   useEffect(() => {
     if (!location.hash) return;
     const id = location.hash.slice(1);
-    const timer = setTimeout(() => {
-      document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
-    }, 100);
-    return () => clearTimeout(timer);
+
+    const scrollToTarget = () => {
+      const el = document.getElementById(id);
+      if (el) el.scrollIntoView({ behavior: "smooth" });
+    };
+
+    const timers = [100, 500, 1000, 1800].map((delay) =>
+      setTimeout(scrollToTarget, delay)
+    );
+
+    return () => timers.forEach(clearTimeout);
   }, [location.hash]);
   return (
     <>
