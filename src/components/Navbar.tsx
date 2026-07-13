@@ -44,7 +44,7 @@ const Navbar = () => {
             alt="Logo"
             className="h-8 md:h-10 w-auto object-contain flex-shrink-0"
           />
-          <div className="flex flex-col justify-center">
+          <div className="flex flex-col justify-center text-center">
             <span className="font-brand text-xs md:text-lg tracking-[0.1em] md:tracking-[0.15em] text-foreground whitespace-nowrap leading-tight">
               THE CONFETTI DIARIES
             </span>
